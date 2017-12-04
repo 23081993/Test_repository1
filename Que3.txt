@@ -1,0 +1,44 @@
+class Shape{
+    private
+    int height;
+    int width;
+    public
+    void setHeight(int height)
+    {
+        this.height=height;
+    }
+    void setWidth( int width)
+    {
+        this.width=width;
+    }
+    void CalculateArea(int height,int width)
+    {
+        float area = ( height * width)/2 ;
+        System.out.println("Area of Rhombus is "  + area);
+    }
+}
+class Rectangle extends Shape{
+  
+    void CalculateArea(int height,int width)
+    {
+        float area = ( height * width) ;
+        System.out.println("Area of Rectangle  is "  + area);
+    }
+}
+class Triangle extends  Shape{
+   
+    void CalculateArea(int height,int width)
+    {
+        float area = ( height * width)/2 ;
+        System.out.println("Area of Triangle is "  + area);
+    }
+}
+public class Area{
+    public static void main(String []args)
+    {
+        Triangle t1 = new Triangle();
+        t1.CalculateArea(3,4);
+        Rectangle R1=new Rectangle ();
+        R1.CalculateArea(4,5);
+    }
+}

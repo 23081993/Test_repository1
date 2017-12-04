@@ -1,0 +1,81 @@
+interface Person{
+    String getName();
+    int getId();
+    
+}
+class Employee implements Person{
+    private
+    String enterName;
+    int enterId;
+    String enterDesignation; 
+  
+     public void setName(String name)
+    {
+        enterName = name;
+    }
+    public void setId(int id)
+    {
+        enterId = id;
+    }
+    public void setDesignation(String designation)
+    {
+        enterDesignation = designation;
+    }
+    
+    public String getName()
+    {
+        return(enterName);
+    }
+  public  int getId()
+    {
+        return(enterId);
+    }
+    public String getDesignation()
+    {
+        return(enterDesignation);
+    }
+    
+}
+class Teacher implements Person{
+    private
+    String enterName;
+    int enterId;
+    String enterDesignation; 
+   
+    public void setName(String name)
+    {
+        enterName = name;
+    }
+    public void setId(int id)
+    {
+        enterId = id;
+    }
+    public void setDesignation(String designation)
+    {
+        enterDesignation = designation;
+    }
+    
+    public String getName()
+    {
+        return(enterName);
+    }
+   public int getId()
+    {
+        return(enterId);
+    }
+    public String getDesignation()
+    {
+        return(enterDesignation);
+    }
+    
+}
+ public class InterfaceExample
+ {
+     public static void main(String []args)
+     {
+      Teacher E1 = new Teacher();
+         E1.setName("sunil");
+         E1.setId(101);
+         System.out.println("Name= "+E1.getName()+"Id="+ E1.getId());
+     }
+ }

@@ -1,0 +1,83 @@
+//import java.lang.String;
+
+class Employee{
+
+private 
+     
+   int enterId;
+ 
+   String  enterName;
+   
+ int tellAge;
+
+ 
+public
+    
+void setId( int id)
+   
+ {
+       
+ enterId=id;
+ 
+   }
+    
+void setName(String name )
+   
+ {
+        enterName=name;
+ 
+   }
+   
+
+ void setAge(int age )
+   
+ {
+      tellAge=age;
+    }
+  
+  String getName()
+    {
+       
+ return(enterName);
+    }
+   
+
+ int getId()
+   
+ {
+        return(enterId);
+    }
+    
+int getAge()
+    {
+        return(tellAge);
+    }
+}
+public class EmployeeInfo{
+    public static void main(String []args)
+    {
+        Employee E1 = new Employee();
+        Employee E2 = new Employee();
+        Employee E3 = new Employee();
+        E1.setId(001);
+        E1.setName("Ram");
+        E1.setAge(24);
+        E2.setId(002);
+        E2.setName("Shyam");
+        E2.setAge(28);
+        E3.setId(003);
+        E3.setName("shubham");
+        E3.setAge(21);
+        System.out.println("E_Name="+E1.getName());
+        System.out.println("E_Id"+E1.getId()); 
+        System.out.println("E_Age="+E1.getAge());
+        System.out.println("E_Name="+E2.getName());
+        System.out.println("E_Id="+E2.getId());
+        System.out.println("E_Age="+E2.getAge());
+        System.out.println("E_Name="+E3.getName());
+        System.out.println("E_Id="+E3.getId());
+        System.out.println("E_Age="+E3.getAge());
+             
+        
+    }
+}

@@ -1,0 +1,358 @@
+
+
+
+import java.util.Scanner;
+
+ abstract class Account {
+	public int netMoney = 1000;
+
+
+   abstract public void setAccountNo(int accountno);
+    //abstract	public int getAccountNo();
+}
+class Savings extends Account {
+    private int enterAccountNo;
+   // private   int netBalance = 1000;
+
+    public void setAccountNo( int  accountNo){
+	    enterAccountNo = accountNo;
+	    
+	}
+    public int getAccountNo() {
+        return (enterAccountNo);
+    }
+    public void DepositMoney(int depositAmount) {
+        netMoney += depositAmount;
+        System.out.println("Your Net Balance is " + netMoney);
+    }
+
+    public void WithdrawMoney(int withdrawlAmount) {
+        if ((netMoney - withdrawlAmount) < 1000) {
+            System.out.println("Sorry,Youraccount should have minimum 1000 Rs");
+        } else {
+            netMoney -= withdrawlAmount;
+            System.out.println("Your Net Balance is " + netMoney);
+        }
+    }
+}
+
+
+class Current extends Account {
+    private int enterAccountNo;
+   //private int netBalance = 5000;
+
+    public void setAccountNo(int accountNo) {
+        enterAccountNo = accountNo;
+
+    }
+    public int getAccountNo() {
+        return (enterAccountNo);
+    }
+    public void DepositMoney(int depositAmount) {
+        netMoney += depositAmount;
+        System.out.println("Your Net Balance is " + netMoney);
+    }
+
+    public void WithdrawMoney(int withdrawlAmount) {
+        if (netMoney < 5000) {
+            System.out.println("Your net Balance is less than 1000");
+        } else {
+            netMoney -= withdrawlAmount;
+            System.out.println("Your Net Balance is " + netMoney);
+        }
+    }
+}
+class Loan extends Account {
+    int enterAccountNo;
+    double totalAmount;
+    double totalTime;
+    double enterRate;
+    int enterMonths;
+
+    public void setAccountNo(int accountNo) {
+        enterAccountNo = accountNo;
+
+    }
+
+    public void setAmount(double amount) {
+        totalAmount = amount;
+    }
+    public void setTime(double time) {
+        totalTime = time;
+    }
+    public void setRate(double interestRate) {
+        enterRate = interestRate;
+    }
+    
+    public void setMonth(int months)
+    {
+        enterMonths = months;
+    }
+        
+        public void CalculateInterestAnually()
+        {
+        double totalInterest = totalAmount * Math.pow(1 + (enterRate / 100), totalTime);
+        System.out.println("Total interest is Rs. " + (totalInterest - totalAmount));
+        }
+        
+        public void CalculateInterestHalfYearly()
+        {
+        double totalInterest = totalAmount * Math.pow(1 + ((enterRate/2) / 100), (2 * totalTime));
+        System.out.println("Total interest is Rs. " + (totalInterest - totalAmount));
+        }
+        
+        public void CalculateInterestQuarterly() 
+        {
+        double totalInterest = totalAmount * Math.pow(1 + ((enterRate/4) / 100), (4 * totalTime));
+        System.out.println("Total interest is Rs. " + (totalInterest - totalAmount));
+        }
+        
+        public void CalculateInterestFractionaly() 
+        {
+        double totalInterest = totalAmount * Math.pow(1 + ((enterRate) / 100), ( totalTime)) * ((1 + (enterMonths * enterRate) / 100));
+        System.out.println("Total interest is Rs. " + (totalInterest - totalAmount));
+        }
+
+
+
+    
+
+}
+
+public class Customer {
+
+    public static void main(String[] args) {
+
+        int enterChoice, i = 0, j = 0;
+        int count = 0;
+        Savings A1 = new Savings();
+        Current A2 = new Current();
+        while(true){
+            count++;
+            i = 0;
+            j = 0;
+            System.out.println("Count : " + count);
+            System.out.println("Enter Your Choice");
+            System.out.println("Enter 1 for Saving Account");
+            System.out.println("Enter 2 for Current Account");
+            System.out.println("Enter 3 for Loan Account");
+            System.out.println("Enter 4 for exit");
+
+            Scanner input = new Scanner(System.in);
+            int enterInput = input.nextInt();
+            System.out.println(enterInput);
+            switch (enterInput) {
+                case 1:
+                   
+                    if (i == 0) {
+
+                        System.out.println("Enter Your Choice");
+                        System.out.println("Enter 5 for Deposit Money");
+                        System.out.println("Enter 6 for Withdraw Money");
+                        //Scanner newInput1 = new Scanner(System.in);
+                        int enterNewInput = input.nextInt();
+
+                        switch (enterNewInput) {
+                            case 5:
+                                System.out.println("Enter your account no");
+                                //Scanner newaccountNo = new Scanner(System.in);
+                                int enterAccountNo1 = input.nextInt();
+                                A1.setAccountNo(enterAccountNo1);
+                                System.out.println("Enter amount to be deposited");
+                                // Scanner amount1 = new Scanner(System.in);
+                                int enterAmount = input.nextInt();
+                                A1.DepositMoney(enterAmount);
+                                /*System.out.println("Enter 0 to continue with this account");
+                                System.out.println("Enter 7 to exit from this account");
+                                int enterWish = input.nextInt();
+                                switch(enterWish)
+                                {
+                                case 
+                                }*/
+                                i++;
+                                break;
+
+                            case 6:
+                                System.out.println("Enter your account no");
+                                // Scanner newaccountNo2 = new Scanner(System.in);
+                                int enterAccountNo2 = input.nextInt();
+                                A1.setAccountNo(enterAccountNo2);
+                                System.out.println("Enter amount to withdraw");
+                                //Scanner newamount2 = new Scanner(System.in);
+                                int enterAmount2 = input.nextInt();
+                                A1.WithdrawMoney(enterAmount2);
+                                i++;
+                                break;
+
+                            default:
+                                System.out.println("Illegal Entry");
+                                i++;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    
+                    if (j == 0) {
+                        System.out.println("Enter Your Choice");
+                        System.out.println("Enter 7 for Deposit Money");
+                        System.out.println("Enter 8 for Withdraw Money");
+                        // Scanner newInput3 = new Scanner(System.in);
+                        int enterNewInput3 = input.nextInt();
+
+                        switch (enterNewInput3) {
+                            case 7:
+                                System.out.println("Enter your account no");
+                                //Scanner accountNo3 = new Scanner(System.in);
+                                int enterAccountNo3 = input.nextInt();
+                                A2.setAccountNo(enterAccountNo3);
+                                System.out.println("Enter amount to be deposited");
+                                // Scanner newamount = new Scanner(System.in);
+                                int enterAmount4 = input.nextInt();
+                                A2.DepositMoney(enterAmount4);
+                                j++;
+                                break;
+
+                            case 8:
+                                System.out.println("Enter your account no");
+                                //Scanner accountNo = new Scanner(System.in);
+                                int enterAccountNo5 = input.nextInt();
+                                A2.setAccountNo(enterAccountNo5);
+                                System.out.println("Enter amount of withdrawl");
+                                //Scanner amount = new Scanner(System.in);
+                                int enterAmount6 = input.nextInt();
+                                A2.WithdrawMoney(enterAmount6);
+                                j++;
+                                break;
+
+                            default:
+                                System.out.println("Illegal Entry");
+                                j++;
+                                break;
+
+                        }
+                    }
+                    break;
+
+                case 3:
+                    
+                  
+                    while(true)
+                    {
+                        System.out.println("ENter your choice");
+                        System.out.println("Enter 1 for calculating compound interest Anually");
+                        System.out.println("Enter 2 for calculating compound interest Half Yearly");
+                        System.out.println("Enter 3 for calculating compound interest Quartely");
+                        System.out.println("Enter 4 for calculating compound interest in months");
+                        System.out.println("Ente 5 for exit");
+                        int interestChoice = input.nextInt();
+                        switch(interestChoice)
+                        {
+                            case 1:
+                                 Loan L1 = new Loan();
+                                 System.out.println("Enter  Account no");
+                                 int AccNo = input.nextInt();
+                                 L1.setAccountNo(AccNo);
+                                 System.out.println("Enter Amount Of Loan");
+                                 double loanAmount = input.nextDouble();
+                                 L1.setAmount(loanAmount);
+                                 System.out.println("Enter Time in years");
+                                 double timePeriod = input.nextDouble();
+                                 L1.setTime(timePeriod);
+                                 System.out.println("Enter Rate of Interest");
+                                 double interestRate = input.nextDouble();
+                                 L1.setRate(interestRate);
+                                 L1.CalculateInterestAnually();
+                                 break;
+                                 
+                            case 2:
+                                 Loan L2 = new Loan();
+                                 System.out.println("Enter  Account no");
+                                 int AccNo1 = input.nextInt();
+                                 L2.setAccountNo(AccNo1);
+                                 System.out.println("Enter Amount Of Loan");
+                                 double loanAmount1 = input.nextDouble();
+                                 L2.setAmount(loanAmount1);
+                                 System.out.println("Enter Time in years");
+                                 double timePeriod1 = input.nextDouble();
+                                 L2.setTime(timePeriod1);
+                                 System.out.println("Enter Rate of Interest");
+                                 double interestRate1 = input.nextDouble();
+                                 L2.setRate(interestRate1);
+                                 L2.CalculateInterestHalfYearly();
+                                 break;
+                                 
+                            case 3:
+                                 Loan L3 = new Loan();
+                                 System.out.println("Enter  Account no");
+                                 int AccNo2 = input.nextInt();
+                                 L3.setAccountNo(AccNo2);
+                                 System.out.println("Enter Amount Of Loan");
+                                 double loanAmount2 = input.nextDouble();
+                                 L3.setAmount(loanAmount2);
+                                 System.out.println("Enter Time in years");
+                                 double timePeriod2 = input.nextDouble();
+                                 L3.setTime(timePeriod2);
+                                 System.out.println("Enter Rate of Interest");
+                                 double interestRate2 = input.nextDouble();
+                                 L3.setRate(interestRate2);
+                                 L3.CalculateInterestQuarterly();
+                                 break;
+                                 
+                            case 4:
+                                 Loan L4 = new Loan();
+                                 System.out.println("Enter  Account no");
+                                 int AccNo3 = input.nextInt();
+                                 L4.setAccountNo(AccNo3);
+                                 System.out.println("Enter Amount Of Loan");
+                                 double loanAmount3 = input.nextDouble();
+                                 L4.setAmount(loanAmount3);
+                                 System.out.println("Enter No of years");
+                                 double timePeriod3 = input.nextDouble();
+                                 L4.setTime(timePeriod3);
+                                 System.out.println("Enter No of months");
+                                 int  timePeriod4 = input.nextInt();
+                                 L4.setMonth(timePeriod4);
+                                 System.out.println("Enter Rate of Interest");
+                                 double interestRate3 = input.nextDouble();
+                                 L4.setRate(interestRate3);
+                                 L4.CalculateInterestFractionaly();
+                                 break;
+                                 
+                                
+                                     
+                                 case 5:
+                                    System.exit(0);
+                        }
+                    }
+                    
+                    /*Loan L1 = new Loan();
+                    
+                    L1.calculateInterest();System.out.println("Enter  Account no");
+                    int AccNo = input.nextInt();
+                    L1.setAccountNo(AccNo);
+                    System.out.println("Enter Amount Of Loan");
+                    int loanAmount = input.nextInt();
+                    L1.setAmount(loanAmount);
+                    System.out.println("Enter Time Period");
+                    int timePeriod = input.nextInt();
+                    L1.setTime(timePeriod);
+                    System.out.println("Enter Rate of Interest");
+                    double interestRate = input.nextDouble();
+                    L1.setRate(interestRate);
+                    break;
+*/                case 4:
+                    System.exit(0);
+
+
+                default:
+                    System.out.println("Illegal Entry");
+                    break;
+
+
+            }
+        }
+
+    }
+}
